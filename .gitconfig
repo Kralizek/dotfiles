@@ -1,0 +1,21 @@
+[init]
+	defaultBranch = master
+[rebase]
+	autosquash = true
+[fetch]
+	prune = true
+[pull]
+	rebase = true
+
+[alias]
+	fix = !git add -A . && git commit --fixup HEAD
+	amend = commit --amend --no-edit
+	build = !git commit -m \"Trigger build\" --allow-empty && git push
+	qc = !git add -A . && git commit -m \"More changes...\"
+	qcp = !git add -A . && git commit -m \"More changes...\" && git push
+	reload = !git checkout master && git fetch --all --prune && git merge upstream/master && git push origin
+	reload-main = !git checkout main && git fetch --all --prune && git merge upstream/main && git push origin
+	continue = !git add . && git rebase --continue
+	topg = log --pretty=oneline --graph -15 --abbrev-commit
+	top = log --pretty=oneline -25 --abbrev-commit
+	dirtyfix = !git add -A . && git commit --amend --no-edit && git push -f
